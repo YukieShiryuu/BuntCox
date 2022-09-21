@@ -1,0 +1,156 @@
+[neopixel neo_case]
+pin: PB6
+chain_count: 162
+color_order: GRB
+#   Set the pixel order required by the LED hardware. Options are GRB,
+#   RGB, BRG, GRBW, or RGBW. The default is GRB.
+
+[led_effect x_red]
+autostart:              true
+leds:
+	neopixel:neo_case (1-12)
+layers:
+    static  0 0 top (0.1, 0.0, 0.0)
+
+[led_effect case_white]
+autostart:              true
+leds:
+	neopixel:neo_case (13-54)
+layers:
+    static  0 0 top (0.1, 0.1, 0.1)
+	
+[gcode_macro neo_startup]
+gcode:
+	neo_off
+	SET_LED_EFFECT EFFECT=case_white
+	SET_LED_EFFECT EFFECT=x_red
+
+[led_effect case_brightwhite]
+autostart:              false
+leds:
+	neopixel:neo_case (13-54)
+layers:
+    static  0 0 top (1.0, 1.0, 1.0)
+
+[led_effect case_off]
+autostart:              false
+leds:
+	neopixel:neo_case (13-54)
+layers:
+    static  0 0 top (0.0, 0.0, 0.0)
+	
+[led_effect x_white]
+autostart:              false
+leds:
+	neopixel:neo_case (1-12)
+layers:
+    static  0 0 top (0.1, 0.1, 0.1)
+
+[led_effect x_brightwhite]
+autostart:              false
+leds:
+	neopixel:neo_case (1-12)
+layers:
+    static  0 0 top (1.0, 1.0, 1.0)
+
+[led_effect x_off]
+autostart:              false
+leds:
+	neopixel:neo_case (13-54)
+layers:
+    static  0 0 top (0.0, 0.0, 0.0)
+
+[gcode_macro neo_off]
+gcode:
+	STOP_LED_EFFECTS
+	SET_LED_EFFECT EFFECT=case_off
+	SET_LED_EFFECT EFFECT=x_off
+
+[gcode_macro case_white]
+gcode:
+	neo_off
+	SET_LED_EFFECT EFFECT=case_white
+	SET_LED_EFFECT EFFECT=x_white
+
+[gcode_macro case_brightwhite]
+gcode:
+	neo_off
+	SET_LED_EFFECT EFFECT=case_brightwhite
+	SET_LED_EFFECT EFFECT=x_brightwhite
+	
+[led_effect x_fire]
+autostart:              false
+frame_rate:             24
+leds:
+	neopixel:neo_case (1-12)
+layers:
+    fire  5 10 top (0.0, 0.0, 0.0),(0.2, 0.2, 0.0),(0.7, 0.5, 0.0),(0.7, 0.0, 0.0),(0.25, 0.25, 0.5)
+
+[led_effect case_fire]
+autostart:              false
+frame_rate:             24
+leds:
+	neopixel:neo_case (13-54)
+layers:
+    fire  5 10 top (0.0, 0.0, 0.0),(0.2, 0.2, 0.0),(0.7, 0.5, 0.0),(0.7, 0.0, 0.0),(0.25, 0.25, 0.5)
+	
+[gcode_macro neo_fire]
+gcode:
+	neo_off
+	SET_LED_EFFECT EFFECT=x_fire
+	SET_LED_EFFECT EFFECT=case_fire
+
+[led_effect x_twink]
+autostart:              false
+frame_rate:             24
+leds:
+	neopixel:neo_case (1-12)
+layers:
+    twinkle  10 .05 top (0.5, 0.0, 0.0)
+
+[led_effect case_twink]
+autostart:              false
+frame_rate:             24
+leds:
+	neopixel:neo_case (13-54)
+layers:
+    twinkle  10 .05 top (0.5, 0.0, 0.0)
+	
+[gcode_macro neo_redtwink]
+gcode:
+	neo_off
+	SET_LED_EFFECT EFFECT=x_twink
+	SET_LED_EFFECT EFFECT=case_twink
+	
+[led_effect x_disco]
+autostart:              false
+frame_rate:             24
+leds:
+	neopixel:neo_case (1-12)
+layers:
+    twinkle  15 .05 top (0.5, 0.0, 0.0),(0.0, 0.5, 0.0),(0.0, 0.0, 0.5),(0.5, 0.5, 0.0),(0.0, 0.5, 0.5),(0.5, 0.0, 0.5)
+
+[led_effect case_disco]
+autostart:              false
+frame_rate:             24
+leds:
+	neopixel:neo_case (13-54)
+layers:
+    twinkle  15 .05 top (0.5, 0.0, 0.0),(0.0, 0.5, 0.0),(0.0, 0.0, 0.5),(0.5, 0.5, 0.0),(0.0, 0.5, 0.5),(0.5, 0.0, 0.5)
+	
+[gcode_macro neo_disco]
+gcode:
+	neo_off
+	SET_LED_EFFECT EFFECT=x_disco
+	SET_LED_EFFECT EFFECT=case_disco
+	
+[led_effect critical_error]
+leds:
+    neopixel:neo_case (1-12)
+layers:
+    strobe         1  1.5   add        (1.0,  1.0, 1.0)
+    breathing      2  0     difference (0.95, 0.0, 0.0)
+    static         1  0     top        (1.0,  0.0, 0.0)
+autostart:                             false
+frame_rate:                            24
+run_on_error:                          true
