@@ -49,7 +49,7 @@ path = ~/fluidd
 
 [wled wleds]
 type = http
-address = 10.2.12.13
+address = wled-981c37
 initial_preset = 1
 chain_count = 50
 
