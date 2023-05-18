@@ -1,11 +1,9 @@
 [server]
 host = 0.0.0.0
 port = 7125
-enable_debug_logging = False
 klippy_uds_address = /tmp/klippy_uds
 
 [database]
-database_path = ~/.moonraker_database
 
 [authorization]
 trusted_clients = 
@@ -26,8 +24,14 @@ cors_domains =
 	*://app.fluidd.xyz
 
 [file_manager]
+<<<<<<< HEAD
 config_path = /home/pi/klipper_config
 log_path = /home/pi/klipper_logs
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e6f1ce56a928272a1524eb7f9a75bd5baf229bfc
+>>>>>>> d571e77769874ea6e86203f390b3c64be4c4a51b
 enable_object_processing = True
 
 [octoprint_compat]
