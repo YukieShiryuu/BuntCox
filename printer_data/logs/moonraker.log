@@ -1,0 +1,303 @@
+--------------------Moonraker Log Start--------------------
+data_path: /home/pi/printer_data
+is_default_data_path: True
+config_file: /home/pi/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+log_file: /home/pi/printer_data/logs/moonraker.log
+software_version: v0.8.0-40-gb21f177
+python_version: 3.9.2 (default, Mar 12 2021, 04:06:34)  [GCC 10.2.1 20210110]
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /tmp/klippy_uds
+
+[database]
+
+[authorization]
+trusted_clients = 
+	100.100.220.58
+	100.101.91.1
+	10.2.0.0/16
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[file_manager]
+enable_object_processing = True
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+
+[update_manager mainsail]
+type = web
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager fluidd]
+type = web
+repo = fluidd-core/fluidd
+path = ~/fluidd
+
+[wled wleds]
+type = http
+address = 10.2.12.13
+initial_preset = 1
+chain_count = 50
+
+[update_manager moonraker-obico]
+type = git_repo
+path = ~/moonraker-obico
+origin = https://github.com/TheSpaghettiDetective/moonraker-obico.git
+env = /home/pi/moonraker-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	moonraker-obico
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+managed_services = crowsnest
+
+#################################################################
+All Configuration Files:
+/home/pi/printer_data/config/moonraker.conf
+/home/pi/printer_data/config/moonraker-obico-update.cfg
+#################################################################
+Unsafe Shutdown Count: 97
+
+System Info:
+
+***python***
+  version: sys.version_info(major=3, minor=9, micro=2, releaselevel='final', serial=0)
+  version_string: 3.9.2 (default, Mar 12 2021, 04:06:34)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 32bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000cdc4e239
+  hardware_desc: BCM2835
+  model: Raspberry Pi 4 Model B Rev 1.2
+  total_memory: 3834304
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 03
+  manufacturer: Sandisk
+  oem_id: 5344
+  product_name: SR128
+  product_revision: 8.0
+  serial_number: 971f5774
+  manufacturer_date: 9/2021
+  capacity: 119.1 GiB
+  total_bytes: 127865454592
+
+***distribution***
+  name: Raspbian GNU/Linux 11 (bullseye)
+  id: raspbian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: debian
+  codename: bullseye
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', 'network-online.target']
+**After=['network-online.target', 'systemd-journald.socket', 'basic.target', 'system.slice', 'sysinit.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/pi/printer_data/systemd/moonraker.env
+**ExecStart=/home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/moonraker.py -l /home/pi/printer_data/logs/moonraker.log -c /home/pi/printer_data/config/moonraker.conf
+**WorkingDirectory=
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=pi
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'sysinit.target']
+**After=['network.target', 'basic.target', 'system.slice', 'systemd-journald.socket', 'sysinit.target']
+**SupplementaryGroups=[]
+**EnvironmentFiles=[]
+**ExecStart=/home/pi/klippy-env/bin/python /home/pi/klipper/klippy/klippy.py /home/pi/printer_data/config/printer.cfg -I /tmp/printer -l /home/pi/printer_data/logs/klippy.log -a /tmp/klippy_uds
+**WorkingDirectory=
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Starts klipper instance  on startup
+**User=pi
+CPU Throttled Flags: ['Under-Voltage Detected', 'Currently Throttled', 'Previously Under-Volted', 'Previously Throttled']
+Klipper Version: v0.11.0-200-g7511151a-dirty
+2023-06-01 13:30:51,842 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper fetch origin --prune --progress) successfully finished
+2023-06-01 13:30:51,881 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper merge-base --is-ancestor HEAD origin/master) successfully finished
+2023-06-01 13:30:51,930 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper branch --list) successfully finished
+2023-06-01 13:30:51,972 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper rev-parse HEAD) successfully finished
+2023-06-01 13:30:52,293 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper describe --always --tags --long --dirty) successfully finished
+2023-06-01 13:30:52,319 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper rev-parse origin/master) successfully finished
+2023-06-01 13:30:52,598 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper describe origin/master --always --tags --long) successfully finished
+2023-06-01 13:30:52,631 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper rev-list --tags --max-count=1) successfully finished
+2023-06-01 13:30:52,673 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper describe --tags e02b725602067a2cd098a62be9a4bb10fc74a9bd) successfully finished
+2023-06-01 13:30:52,732 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper log 7511151ac95acb9f55efffa2ad5780bf2683d977..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
+2023-06-01 13:30:52,780 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper for-each-ref --count=10 --sort='-creatordate' --format='%(if)%(*objecttype)%(then)%(*objecttype) (*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2023-06-01 13:30:52,782 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/pi/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper.git
+Current Commit SHA: 7511151ac95acb9f55efffa2ad5780bf2683d977
+Upstream Commit SHA: 0539e9f2666839d9adeecdfcf492a45a0d3aac1a
+Current Version: v0.11.0-200
+Upstream Version: v0.11.0-210
+Is Dirty: False
+Is Detached: False
+Commits Behind: 10
+Tag Data: {}
+Bound Repo: None
+Diverged: False
+2023-06-01 13:30:52,782 [base_deploy.py:log_info()] - Application klipper: Channel: dev, Need Channel Update: False
+2023-06-01 13:30:52,783 [base_deploy.py:log_info()] - Application klipper: Validity check for git repo passed
+2023-06-01 13:30:53,152 [update_manager.py:_get_remote_version()] - Github client Info Received:
+Repo: mainsail
+Local Version: v2.5.1
+Remote Version: v2.5.1
+Pre-release: False
+url: https://github.com/mainsail-crew/mainsail/releases/download/v2.5.1/mainsail.zip
+size: 1991346
+Content Type: application/zip
+2023-06-01 13:30:53,511 [update_manager.py:_get_remote_version()] - Github client Info Received:
+Repo: fluidd
+Local Version: v1.24.0
+Remote Version: v1.24.0
+Pre-release: False
+url: https://github.com/fluidd-core/fluidd/releases/download/v1.24.0/fluidd.zip
+size: 3451126
+Content Type: application/zip
+2023-06-01 13:30:53,623 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico status -u no) successfully finished
+2023-06-01 13:30:53,691 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico config --get branch.master.remote) successfully finished
+2023-06-01 13:30:53,730 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico remote get-url origin) successfully finished
+2023-06-01 13:30:56,675 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico fetch origin --prune --progress) successfully finished
+2023-06-01 13:30:56,705 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico merge-base --is-ancestor HEAD origin/master) successfully finished
+2023-06-01 13:30:56,730 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico branch --list) successfully finished
+2023-06-01 13:30:56,756 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico rev-parse HEAD) successfully finished
+2023-06-01 13:30:56,804 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico describe --always --tags --long --dirty) successfully finished
+2023-06-01 13:30:56,829 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico rev-parse origin/master) successfully finished
+2023-06-01 13:30:56,860 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico describe origin/master --always --tags --long) successfully finished
+2023-06-01 13:30:56,897 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico rev-list --tags --max-count=1) successfully finished
+2023-06-01 13:30:56,927 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico describe --tags e755c5694a2660da8728538476ab2f7c63169ed5) successfully finished
+2023-06-01 13:30:56,959 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico log 442716e36b667db6bb2cfd1c20c9488e9e4667f1..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
+2023-06-01 13:30:56,994 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker-obico for-each-ref --count=10 --sort='-creatordate' --format='%(if)%(*objecttype)%(then)%(*objecttype) (*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2023-06-01 13:30:56,996 [git_deploy.py:log_repo_info()] - Git Repo moonraker-obico Detected:
+Owner: TheSpaghettiDetective
+Repository Name: moonraker-obico
+Path: /home/pi/moonraker-obico
+Remote: origin
+Branch: master
+Remote URL: https://github.com/TheSpaghettiDetective/moonraker-obico.git
+Current Commit SHA: 442716e36b667db6bb2cfd1c20c9488e9e4667f1
+Upstream Commit SHA: e755c5694a2660da8728538476ab2f7c63169ed5
+Current Version: v1.3.4-0
+Upstream Version: v1.4.2-0
+Is Dirty: False
+Is Detached: False
+Commits Behind: 30
+Tag Data: {}
+Bound Repo: None
+Diverged: False
+2023-06-01 13:30:56,996 [base_deploy.py:log_info()] - Application moonraker-obico: Channel: dev, Need Channel Update: False
+2023-06-01 13:30:56,997 [base_deploy.py:log_info()] - Application moonraker-obico: Validity check for git repo passed
+2023-06-01 13:30:57,041 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest status -u no) successfully finished
+2023-06-01 13:30:57,074 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest config --get branch.master.remote) successfully finished
+2023-06-01 13:30:57,100 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest remote get-url origin) successfully finished
+2023-06-01 13:30:58,450 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest fetch origin --prune --progress) successfully finished
+2023-06-01 13:30:58,486 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest merge-base --is-ancestor HEAD origin/master) successfully finished
+2023-06-01 13:30:58,521 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest branch --list) successfully finished
+2023-06-01 13:30:58,546 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest rev-parse HEAD) successfully finished
+2023-06-01 13:30:58,590 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest describe --always --tags --long --dirty) successfully finished
+2023-06-01 13:30:58,615 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest rev-parse origin/master) successfully finished
+2023-06-01 13:30:58,651 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest describe origin/master --always --tags --long) successfully finished
+2023-06-01 13:30:58,690 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest rev-list --tags --max-count=1) successfully finished
+2023-06-01 13:30:58,720 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest describe --tags b0c011b4ef9aea19352b90cab7d06383eef555eb) successfully finished
+2023-06-01 13:30:58,755 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest log 20ed6a8b585a92e8a0e7d8333e81b6e8ca7044e1..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
+2023-06-01 13:30:58,789 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest for-each-ref --count=10 --sort='-creatordate' --format='%(if)%(*objecttype)%(then)%(*objecttype) (*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2023-06-01 13:30:58,791 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
+Owner: mainsail-crew
+Repository Name: crowsnest
+Path: /home/pi/crowsnest
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/crowsnest.git
+Current Commit SHA: 20ed6a8b585a92e8a0e7d8333e81b6e8ca7044e1
+Upstream Commit SHA: 09f4cb1ed2dc7c015da2fa97fad2f7e7220e118d
+Current Version: v3.0.7-3
+Upstream Version: v4.0.2-1
+Is Dirty: False
+Is Detached: False
+Commits Behind: 28
+Tag Data: {}
+Bound Repo: None
+Diverged: False
+2023-06-01 13:30:58,791 [base_deploy.py:log_info()] - Application crowsnest: Channel: dev, Need Channel Update: False
+2023-06-01 13:30:58,791 [base_deploy.py:log_info()] - Application crowsnest: Validity check for git repo passed
+2023-06-01 13:30:59,099 [machine.py:_find_public_ip()] - Detected Local IP: 10.2.12.12
+2023-06-01 13:31:06,114 [websockets.py:on_close()] - Websocket Closed: ID: 3886821656 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 2.88
+2023-06-01 13:32:00,306 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-06-01 13:32:00,313 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-06-01 13:32:00,319 [klippy_connection.py:_check_ready()] - 
+mcu 'mcu': Unable to connect
+Once the underlying issue is corrected, use the
+"FIRMWARE_RESTART" command to reset the firmware, reload the
+config, and restart the host software.
+Error configuring printer
+
+2023-06-01 13:35:38,752 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2023-06-01 13:35:38,752 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 10.2.12.140

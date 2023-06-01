@@ -1,0 +1,26 @@
+[filament_motion_sensor encoder_sensor]
+detection_length: 10
+#   The minimum length of filament pulled through the sensor to trigger
+#   a state change on the switch_pin
+#   Default is 7 mm.
+extruder: extruder
+#   The name of the extruder section this sensor is associated with.
+#   This parameter must be provided.
+switch_pin: PG15
+# changing the switch_pin name according to your motherboard
+#pause_on_runout: True
+#runout_gcode:
+#	{% set RUNOUTRETRIES = RUNOUTRETRIES+1 %}
+#	{% if RUNOUTRETRIES >= 3 %}
+#		M118 Filament Retried & Failed, Pausing
+#		PAUSE
+#	{% else %}
+#		M118 Filament Stoppage, Retrying
+#		G91
+#		G1 e-10 f180
+#		G1 e10 f180
+#		RESUME
+#	{% endif %}
+#insert_gcode:
+#event_delay:
+#pause_delay:
