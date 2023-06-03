@@ -183,3 +183,49 @@ moonraker.utils.ServerError: Klippy Host not connected
 2023-06-03 00:04:11,244 [job_state.py:_handle_started()] - Job state initialized: standby
 2023-06-03 00:04:11,517 [klippy_connection.py:_check_ready()] - Klippy ready
 2023-06-03 00:04:12,023 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor pi', 'temperature_sensor Octopus', 'temperature_sensor FLY-SHT', 'extruder']
+2023-06-03 00:35:23,253 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-06-03 00:35:34,073 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-06-03 00:35:37,451 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-06-03 00:35:38,711 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-06-03 00:35:42,206 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-06-03 00:35:42,208 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-06-03 00:35:42,456 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-06-03 00:35:42,732 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-06-03 00:35:43,213 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor chamber', 'temperature_sensor pi', 'temperature_sensor Octopus', 'temperature_sensor FLY-SHT', 'extruder']
+2023-06-03 00:35:51,555 [klippy_connection.py:_process_status_update()] - Klippy has shutdown
+2023-06-03 00:35:51,562 [proc_stats.py:_handle_shutdown()] - 
+Moonraker System Usage Statistics:
+System Time: 1685777722.444414, Usage: 2.46%, Memory: 28616 kB
+System Time: 1685777723.445713, Usage: 5.61%, Memory: 28616 kB
+System Time: 1685777724.448795, Usage: 1.84%, Memory: 28616 kB
+System Time: 1685777725.447786, Usage: 1.84%, Memory: 28616 kB
+System Time: 1685777726.449870, Usage: 1.21%, Memory: 28616 kB
+System Time: 1685777727.450951, Usage: 1.74%, Memory: 28616 kB
+System Time: 1685777728.461438, Usage: 1.37%, Memory: 28616 kB
+System Time: 1685777729.455284, Usage: 1.79%, Memory: 28616 kB
+System Time: 1685777730.453652, Usage: 1.73%, Memory: 28616 kB
+System Time: 1685777731.454287, Usage: 3.01%, Memory: 28616 kB
+System Time: 1685777732.454839, Usage: 0.78%, Memory: 28616 kB
+System Time: 1685777733.456573, Usage: 1.87%, Memory: 28616 kB
+System Time: 1685777734.457733, Usage: 9.14%, Memory: 28664 kB
+System Time: 1685777735.458172, Usage: 0.87%, Memory: 28664 kB
+System Time: 1685777736.459462, Usage: 1.12%, Memory: 28664 kB
+System Time: 1685777737.459823, Usage: 1.66%, Memory: 28664 kB
+System Time: 1685777738.463942, Usage: 0.7%, Memory: 28664 kB
+System Time: 1685777739.463612, Usage: 6.68%, Memory: 28740 kB
+System Time: 1685777740.468127, Usage: 1.69%, Memory: 28744 kB
+System Time: 1685777741.464814, Usage: 4.9%, Memory: 28744 kB
+System Time: 1685777742.465278, Usage: 2.04%, Memory: 28744 kB
+System Time: 1685777743.466019, Usage: 5.75%, Memory: 28900 kB
+System Time: 1685777744.466778, Usage: 1.21%, Memory: 28904 kB
+System Time: 1685777745.468309, Usage: 0.98%, Memory: 28904 kB
+System Time: 1685777746.476080, Usage: 1.53%, Memory: 28904 kB
+System Time: 1685777747.472510, Usage: 2.59%, Memory: 28904 kB
+System Time: 1685777748.475676, Usage: 2.03%, Memory: 28904 kB
+System Time: 1685777749.474532, Usage: 2.67%, Memory: 28904 kB
+System Time: 1685777750.478415, Usage: 2.14%, Memory: 28904 kB
+System Time: 1685777751.481641, Usage: 6.03%, Memory: 28904 kB
+CPU Temperature: 38.946
+2023-06-03 00:35:51,574 [proc_stats.py:_handle_shutdown()] - Throttled Flags: 
+2023-06-03 00:42:17,062 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2023-06-03 01:02:17,065 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 10.2.12.140

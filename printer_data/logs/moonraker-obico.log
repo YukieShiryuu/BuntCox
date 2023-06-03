@@ -25194,3 +25194,4 @@ Traceback (most recent call last):
     self._received_klippy_update(event.data['result'])
 KeyError: 'result'
 2023-06-03 00:04:36,840      INFO  obico.app - detected state change: Offline -> Operational
+2023-06-03 00:35:23,259      INFO  obico.app - detected state change: Operational -> Offline
