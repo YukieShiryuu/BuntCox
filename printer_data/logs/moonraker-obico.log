@@ -25184,3 +25184,13 @@ Video encoding failed
 2023-06-02 23:55:07,777      INFO  obico.app - detected state change: Operational -> Offline
 2023-06-02 23:57:36,291      INFO  obico.app - detected state change: Offline -> Operational
 2023-06-02 23:58:37,900      INFO  obico.app - detected state change: Operational -> Offline
+2023-06-03 00:04:06,670     ERROR  obico.utils - 
+Traceback (most recent call last):
+  File "/home/pi/moonraker-obico/moonraker_obico/app.py", line 202, in event_loop
+    self._process_event(event)
+  File "/home/pi/moonraker-obico/moonraker_obico/app.py", line 214, in _process_event
+    self._on_moonrakerconn_event(event)
+  File "/home/pi/moonraker-obico/moonraker_obico/app.py", line 250, in _on_moonrakerconn_event
+    self._received_klippy_update(event.data['result'])
+KeyError: 'result'
+2023-06-03 00:04:36,840      INFO  obico.app - detected state change: Offline -> Operational
